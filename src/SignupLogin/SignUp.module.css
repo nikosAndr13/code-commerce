@@ -1,0 +1,10 @@
+.buttons {
+  border: none;
+  padding:10px;
+  color:#fff;
+  font-size: 14px;
+  font-weight: 600;
+}
+.pink {background: rgb(204,44,83);}
+
+.blue {background: rgb(65,90,146);}

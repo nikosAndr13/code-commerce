@@ -1,0 +1,15 @@
+.imgWidth {
+  width:15px;
+  position: absolute;
+  right: 0;
+  top:0;
+  padding:10px;
+  opacity: .3;
+  transition: all .5s ease-in-out;
+}
+
+.imgWidth:hover {
+  opacity: 0.9;
+}
+
+input[type=radio].radio {accent-color: rgb(204, 44, 83);}

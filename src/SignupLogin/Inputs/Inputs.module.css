@@ -1,0 +1,22 @@
+.inputsBorder {
+  border:none;
+  outline: none;
+}
+
+.inputsWrapper {
+  border:2px solid rgb(236,236,236);
+  display: flex;
+  justify-content: space-between;
+  padding:10px 10px;
+}
+
+.imgWidth {
+  filter: invert(100%) contrast(75%);
+  width: 20px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;;
+}
+
+.imgWidth:hover {
+  filter: invert(80%) contrast(40%);
+}
