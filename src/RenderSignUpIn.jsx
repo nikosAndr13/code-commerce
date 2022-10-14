@@ -3,16 +3,19 @@ import Signin from "./SignupLogin/Signin";
 import Signup from "./SignupLogin/Signup";
 import X from "../src/assets/x-solid.svg";
 import styles from "../src/RenderSignUpIn.module.css"
-import { accountData } from "./Data";
-
+import {
+  emailValidation,
+  passwordValidation,
+  firstNameValidation,
+  surNameValidation,
+  postalCodeValidation,
+} from './validations';
 
 class RenderSignUpIn extends React.Component{
     constructor(props) {
       super(props); 
       this.state = {
         signedUp: false,
-        accountData: accountData,
-        signedUpAccounts: [],
         }
       }
 
@@ -23,20 +26,43 @@ class RenderSignUpIn extends React.Component{
       : this.setState({signedUp:true})
   }
 
-trackState = ({target: {name,value}}) => {
-     this.setState((prevState) => ({
-       accountData: {
-        ...prevState.accountData,
-         [name]: '',
-       }
-     }));
+
+   trackState = ({target: {name,value}}) => {
      this.setState((prevState) => ({
        accountData: {
          ...prevState.accountData,
          [name]: value,
-       }
-     }))
+        }
+      }))
+    console.log(name);
+    console.log(value);
   }
+
+  handleValidations = (name, value) => {
+    // let errorText;
+    switch(name) {
+        case 'email' :
+            emailValidation(value);
+        break;
+      case 'password':  
+            passwordValidation(value);
+        break;
+      case 'firstName' : 
+            firstNameValidation(value);
+        break;
+      case 'surname' :
+            surNameValidation(value);
+        break;
+      case 'postalCode' :
+            postalCodeValidation(value);
+        break;   
+         default: break;
+    }
+  }
+
+  handleBlur = ({target: {name, value}}) => {
+    this.handleValidations(name,value);
+  }  
 
   revealPassword = (e) => {
     const inputType = e.target.previousSibling.type;
@@ -45,10 +71,6 @@ trackState = ({target: {name,value}}) => {
     : e.target.previousSibling.type = 'password'
    }
 
-   handleSignUp = () => {
-    
-   }
- 
 
   render() {
     const radioData = [
@@ -74,11 +96,12 @@ trackState = ({target: {name,value}}) => {
         ? (<Signin
         revealPassword={this.revealPassword}
         trackState={this.trackState}
+        handleBlur={this.handleBlur}
         />) 
         : <Signup
         revealPassword={this.revealPassword}
         trackState={this.trackState}
-
+        handleBlur={this.handleBlur}
         />}
 
     </>

@@ -9,16 +9,17 @@ class Signin extends React.Component {
     super(props);
     this.state= {
       accountData: accountData,
+      defaultUser: {
+        email: 'nickos2014andriopoulos@gmail.com',
+        password: '2014201420Ni!',
+        firstName: 'Nikos',
+        lastName: 'Andriopoulos',
+        postalCode: '12345',
+      }
     }
   }
 
   // trackState = ({target: {name,value}}) => {
-  //   this.setState((prevState) => ({
-  //     accountData: {
-  //       ...prevState.accountData,
-  //       [name]: '',
-  //     }
-  //   }));
   //   this.setState((prevState) => ({
   //     accountData: {
   //       ...prevState.accountData,
@@ -29,7 +30,7 @@ class Signin extends React.Component {
 
   render() {  
     const {accountData} = this.state;
-    const {revealPassword, trackState} = this.props;
+    const {revealPassword, handleBlur, trackState} = this.props;
     return (
       <>
       {inputsInfo.map((item) => (
@@ -40,6 +41,7 @@ class Signin extends React.Component {
             value={accountData && accountData[item.name]}
             autoComplete='off'
             onClick={revealPassword}
+            onBlur={handleBlur}
             />
         </div>
       ))}
