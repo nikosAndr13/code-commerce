@@ -1,6 +1,6 @@
 .App {
   max-width: 400px;
-  height: fit-content;
+  max-height: 80vh;
   width:100%;
   position: absolute;
   top:50%;
@@ -15,3 +15,5 @@
   font-weight: 500;
   color:rgb(146,146,146);
 }
+
+

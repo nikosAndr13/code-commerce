@@ -1,34 +1,31 @@
-const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-const passwordRegex = new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,20})');
+const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+const passwordRegex = /^(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.*[^a-z])(?=.{8,20})/;
 const nameRegex = /^([^0-9]*)$/;
 const postalRegex = /^\d+$/;
 
-export const emailValidation = (email) => {
+export const emailValidation = (email) => 
   (!emailRegex.test(email))
-  ? console.log('Insert a valid email address')
-  : console.log('you are good')
-}
+  ? 'Insert a valid email address'
+  : ''
 
-export const passwordValidation = (password) => {
-  (!passwordRegex.test(password)) 
-  ? console.log('Insert a valid password address')
-  : console.log('you are good')
-}
 
-export const firstNameValidation = (firstName) => {
+export const passwordValidation = (password) => 
+  (!passwordRegex.test(password) || (password.length === 0)) 
+  ? 'Insert a valid password'
+  : ''
+
+
+export const firstNameValidation = (firstName) => 
   (!nameRegex.test(firstName))
-  ? console.log('Set a valid name bro')
-  : console.log('Cool name'); 
-} 
+  ? 'Your name is not valid'
+  : ''
 
-export const surNameValidation = (surName) => {
+export const surNameValidation = (surName) => 
   (!nameRegex.test(surName))
-  ? console.log('Set a valid name bro')
-  : console.log('Cool name'); 
-} 
+  ? 'Your name is not valid'
+  : ''
 
-export const postalCodeValidation = (postalCode) => {
+export const postalCodeValidation = (postalCode) => 
   (!postalRegex.test(postalCode))
-  ? console.log('You fix that')
-  : console.log('You good')
-}
+  ? 'Enter a valid Zip/Postal Code'
+  : ''
