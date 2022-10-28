@@ -23,3 +23,11 @@ export const defaultValues = {
   surname: "",
   postalCode: "",
 };
+
+export const errorValues = {
+  email: "",
+  password: "",
+  firstName: "",
+  surname: "",
+  postalCode: "",
+};

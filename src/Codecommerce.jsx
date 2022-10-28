@@ -42,7 +42,6 @@ class Codecommerce extends React.Component {
     })
   }
 
-
   checkForError = () => {
     const {error} = this.state;
     for (const key in (error)) {
@@ -60,44 +59,26 @@ class Codecommerce extends React.Component {
     } else return false;
   }
 
-  handleValidations = (name, value) => {
-    switch (name) {
-      case "email":
-        this.setState((prevState) => ({
-          error: { ...prevState.error, email: emailValidation(value) },
-        }));
-        break;
-      case "password":
-        this.setState((prevState) => ({
-          error: { ...prevState.error, password: passwordValidation(value) },
-        }));
-        break;
-      case "confirm":
-        this.setState((prevState) => ({
-          error: { ...prevState.error, confirm: this.confirmPassword() },
-        }));
-        break;
-      case "firstName":
-        this.setState((prevState) => ({
-          error: { ...prevState.error, firstName: firstNameValidation(value) },
-        }));
-        break;
-      case "surname":
-        this.setState((prevState) => ({
-          error: { ...prevState.error, surname: surNameValidation(value) },
-        }));
-        break;
-      case "postalCode":
-        this.setState((prevState) => ({
-          error: {
-            ...prevState.error,
-            postalCode: postalCodeValidation(value),
-          },
-        }));
-        break;
-      default:
-        break;
-    }
+  handleValidations = () => {
+    const {email, password, firstName, surname, postalCode} = this.state.accountData;
+    this.setState((prevState) => ({
+      error: { ...prevState.error, email: emailValidation(email) },
+    }));
+    this.setState((prevState) => ({
+      error: { ...prevState.error, password: passwordValidation(password) },
+    }));
+    this.setState((prevState) => ({
+      error: { ...prevState.error, confirm: this.confirmPassword() },
+    }));  
+    this.setState((prevState) => ({
+      error: { ...prevState.error, firstName: firstNameValidation(firstName) },
+    }));
+    this.setState((prevState) => ({
+      error: { ...prevState.error, surname: surNameValidation(surname) },
+    }));
+    this.setState((prevState) => ({
+      error: { ...prevState.error,postalCode: postalCodeValidation(postalCode) },
+    }));
   }
 
   confirmPassword = () => {
@@ -109,13 +90,14 @@ class Codecommerce extends React.Component {
   
   handleSignIn = (e) => {
     e.preventDefault();
-    (this.checkForError() && (this.checkForExistingAccount())) 
+    (this.checkForError() && this.checkForExistingAccount()) 
     ? this.setState({successfulSignIn: true})
     : this.setState({successfulSignIn: false})
   } 
 
   handleSubmit = (e) => {
     e.preventDefault();
+    this.handleValidations();
     if (this.checkForError() && this.checkForExistingAccount()) {
       this.setState((prevState) => {
         const { email, password, firstName, lastName, postalCode } = this.state.accountData;
@@ -132,6 +114,7 @@ class Codecommerce extends React.Component {
       });
     }
   };
+  
 
   render() {
     return (
@@ -147,7 +130,6 @@ class Codecommerce extends React.Component {
           handleSignIn={this.handleSignIn}
           handleSubmit={this.handleSubmit}
           resetForms={this.resetForms}
-          handleValidations={this.handleValidations}
           checkForExistingAccount={this.checkForExistingAccount}
           successfulSignIn={this.state.successfulSignIn}
           confirmPassword={this.confirmPassword}

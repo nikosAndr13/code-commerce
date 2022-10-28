@@ -1,13 +1,11 @@
-const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
 const passwordRegex = /^(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.*[^a-z])(?=.{8,20})/;
 const nameRegex = /^([^0-9]*)$/;
 const postalRegex = /^\d+$/;
 
 export const emailValidation = (email) => 
-  (!emailRegex.test(email))
+  (!email.includes('@'))
   ? 'Insert a valid email address'
-  : ''
-
+  : '';
 
 export const passwordValidation = (password) => 
   (!passwordRegex.test(password) || (password.length === 0)) 

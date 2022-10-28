@@ -18,11 +18,6 @@ class RenderSignUpIn extends React.Component {
     this.props.resetForms();
   };
 
-  handleBlur = ({ target: { name, value } }) => {
-    this.props.handleValidations(name, value);
-    this.props.confirmPassword();
-  };
-
   revealPassword = (e) => {
     const inputType = e.target.previousSibling.type;
     inputType === "password"
@@ -36,7 +31,7 @@ class RenderSignUpIn extends React.Component {
       { label: "SIGN IN", type: "radio", name: "signIn", key: "sign In" },
       { label: "CREATE ACCOUNT", type: "radio", name: "signIn", key: "create" },
     ];
-    const { handleSignIn, error, accountData, trackState, checkForExistingAccount ,handleSubmit } = this.props; 
+    const { handleSignIn, error, handleValidations, accountData, trackState, checkForExistingAccount ,handleSubmit } = this.props; 
     return (
       <>
         <div>
@@ -61,16 +56,14 @@ class RenderSignUpIn extends React.Component {
           <Signin
             revealPassword={this.revealPassword}
             trackState={trackState}
-            handleBlur={this.handleBlur}
             handleSignIn={handleSignIn}
             accountData={accountData}
             error={error}
           />
-        ) : (
+          ) : (
           <Signup
             revealPassword={this.revealPassword}
             trackState={trackState}
-            handleBlur={this.handleBlur}
             checkForExistingAccount={checkForExistingAccount()}
             handleSubmit={handleSubmit}
             accountData={accountData}

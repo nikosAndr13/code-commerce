@@ -2,13 +2,13 @@ import React from "react";
 import styles from "../Inputs/Inputs.module.css";
 import Eye from "../../assets/eye-solid.svg";
 
-const Text = ({label, name, type, onClick, error, account,...props}) => {
+const Text = ({label, name, type, onClick, error, value, account,...props}) => {
   return (
       <>
         <label>
           <div style={{paddingBottom: '10px'}}>{label}</div>
         <div className={styles.inputsWrapper}>
-          <input className={styles.inputsBorder} {...props} type={type} name={name}/>
+          <input className={styles.inputsBorder} {...props} type={type} value={value} name={name}/>
           {(type === 'password')
            ? <img className={styles.imgWidth} src={Eye} alt="eye" onClick={onClick} />
            : ''}

@@ -5,7 +5,6 @@ import styles from "../SignupLogin/SignIn.module.css";
 
 const Signin = ({
   revealPassword,
-  handleBlur,
   trackState,
   handleSignIn,
   accountData,
@@ -20,9 +19,8 @@ const Signin = ({
               {...item}
               onChange={trackState}
               autoComplete="off"
-              value={accountData && accountData[item.name]}
+              value={accountData[item.name]}
               onClick={revealPassword}
-              onBlur={handleBlur}
               error={error[item.name]}
             />
           </div>

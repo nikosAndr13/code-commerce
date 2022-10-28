@@ -3,8 +3,7 @@ import Text from "./Inputs/Inputs";
 import { createNewAccount } from "../Data";
 import styles from "../SignupLogin/SignUp.module.css";
 
-const Signup = ({revealPassword, handleBlur, trackState, handleSubmit, checkForExistingAccount, error}) => {
-  console.log(error)
+const Signup = ({revealPassword, trackState, accountData, handleSubmit, checkForExistingAccount, error}) => {
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -15,8 +14,8 @@ const Signup = ({revealPassword, handleBlur, trackState, handleSubmit, checkForE
               onChange={trackState}
               autoComplete='off'
               onClick={revealPassword}
-              onBlur={handleBlur}
               account={checkForExistingAccount}
+              value={accountData[item.name]}
               error={error && error[item.name] ? error[item.name] : null} 
               />
           </div>
