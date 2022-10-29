@@ -44,6 +44,7 @@ class Codecommerce extends React.Component {
 
   checkForError = () => {
     const {error} = this.state;
+    this.handleValidations();
     for (const key in (error)) {
       if (error[key] !== '') 
       return false

@@ -18,16 +18,8 @@ createNewAccount.splice(2, 0, confirmPassword);
 export const defaultValues = {
   email: "",
   password: "",
-  confirm: "",
   firstName: "",
   surname: "",
   postalCode: "",
 };
 
-export const errorValues = {
-  email: "",
-  password: "",
-  firstName: "",
-  surname: "",
-  postalCode: "",
-};

@@ -3,7 +3,7 @@ const nameRegex = /^([^0-9]*)$/;
 const postalRegex = /^\d+$/;
 
 export const emailValidation = (email) => 
-  (!email.includes('@'))
+  (!email.includes('@') || (email.length === 0))
   ? 'Insert a valid email address'
   : '';
 
