@@ -44,7 +44,6 @@ class Codecommerce extends React.Component {
 
   checkForError = () => {
     const {error} = this.state;
-    this.handleValidations();
     for (const key in (error)) {
       if (error[key] !== '') 
       return false
@@ -55,9 +54,20 @@ class Codecommerce extends React.Component {
   checkForExistingAccount = () => {
     const {signedUpUsers} = this.state;
     const existingAccount = signedUpUsers.find( ({email}) => email === this.state.accountData.email)
-    if (existingAccount !== undefined) {
+     if (existingAccount !== undefined) {
+       return true;
+     } else return false;
+  }
+
+  checkForExistingPassword = () => {
+    const {signedUpUsers} = this.state;
+    const existingPassword = signedUpUsers.find( ({password}) => password === this.state.accountData.password)
+    if (existingPassword !== undefined) {
       return true;
-    } else return false;
+    } else 
+    // this.setState((prevState) => ({ error: {...prevState.error, password: 'Wrong Password'}}))
+    return false;
+
   }
 
   handleValidations = () => {
@@ -84,22 +94,30 @@ class Codecommerce extends React.Component {
 
   confirmPassword = () => {
     const { password, confirm } = this.state.accountData;
-    return this.state.error.password !== undefined && password === confirm
+    return (password === confirm)
       ? ""
       : "Passwords don't match";
   };
   
   handleSignIn = (e) => {
     e.preventDefault();
-    (this.checkForError() && this.checkForExistingAccount()) 
+    (this.checkForError() && this.checkForExistingAccount() && this.checkForExistingPassword()) 
     ? this.setState({successfulSignIn: true})
-    : this.setState({successfulSignIn: false})
+    : this.setState({successfulSignIn: false});
+
+    if (!this.checkForExistingPassword()) {
+     this.setState((prevState) => ({error: {...prevState.error, password: 'Wrong Password'}})) 
+    } else {this.setState((prevState) => ({error: {...prevState.error, password: ''}}))}
+
+     if (!this.checkForExistingAccount()) {
+      this.setState((prevState) => ({error: {...prevState.error, email: 'Account Does not Exist'}}))
+    } else {this.setState((prevState) => ({error: {...prevState.error, email: ''}}))}
   } 
 
   handleSubmit = (e) => {
     e.preventDefault();
     this.handleValidations();
-    if (this.checkForError() && this.checkForExistingAccount()) {
+    if (this.checkForError() && !this.checkForExistingAccount()) {
       this.setState((prevState) => {
         const { email, password, firstName, lastName, postalCode } = this.state.accountData;
         const newUser = {
@@ -114,9 +132,11 @@ class Codecommerce extends React.Component {
         };
       });
     }
+    if (this.checkForExistingAccount())
+       {this.setState((prevState => ({error: {...prevState.error, email:'Account Already exists'}}))
+    )}
   };
   
-
   render() {
     return (
       <>
@@ -131,7 +151,6 @@ class Codecommerce extends React.Component {
           handleSignIn={this.handleSignIn}
           handleSubmit={this.handleSubmit}
           resetForms={this.resetForms}
-          checkForExistingAccount={this.checkForExistingAccount}
           successfulSignIn={this.state.successfulSignIn}
           confirmPassword={this.confirmPassword}
           />

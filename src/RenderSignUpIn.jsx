@@ -31,7 +31,7 @@ class RenderSignUpIn extends React.Component {
       { label: "SIGN IN", type: "radio", name: "signIn", key: "sign In" },
       { label: "CREATE ACCOUNT", type: "radio", name: "signIn", key: "create" },
     ];
-    const { handleSignIn, error, handleValidations, accountData, trackState, checkForExistingAccount ,handleSubmit } = this.props; 
+    const { handleSignIn, error, accountData, trackState,handleSubmit } = this.props; 
     return (
       <>
         <div>
@@ -64,7 +64,6 @@ class RenderSignUpIn extends React.Component {
           <Signup
             revealPassword={this.revealPassword}
             trackState={trackState}
-            checkForExistingAccount={checkForExistingAccount()}
             handleSubmit={handleSubmit}
             accountData={accountData}
             error={error}

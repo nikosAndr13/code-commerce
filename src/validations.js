@@ -7,11 +7,11 @@ export const emailValidation = (email) =>
   ? 'Insert a valid email address'
   : '';
 
-export const passwordValidation = (password) => 
-  (!passwordRegex.test(password) || (password.length === 0)) 
+export const passwordValidation = (password) => {
+  return (!passwordRegex.test(password) || (password.length === 0)) 
   ? 'Insert a valid password'
   : ''
-
+}
 
 export const firstNameValidation = (firstName) => 
   (!nameRegex.test(firstName))

@@ -3,8 +3,7 @@ import Text from "./Inputs/Inputs";
 import { createNewAccount } from "../Data";
 import styles from "../SignupLogin/SignUp.module.css";
 
-const Signup = ({revealPassword, trackState, accountData, handleSubmit, checkForExistingAccount, error}) => {
-  return (
+const Signup = ({revealPassword, trackState, accountData, handleSubmit, error}) => (
     <>
       <form onSubmit={handleSubmit}>
         {createNewAccount.map((item) => (
@@ -14,7 +13,6 @@ const Signup = ({revealPassword, trackState, accountData, handleSubmit, checkFor
               onChange={trackState}
               autoComplete='off'
               onClick={revealPassword}
-              account={checkForExistingAccount}
               value={accountData[item.name]}
               error={error && error[item.name] ? error[item.name] : null} 
               />
@@ -25,8 +23,8 @@ const Signup = ({revealPassword, trackState, accountData, handleSubmit, checkFor
         <button className={`${styles.buttons} ${styles.blue}`}>SIGN UP WITH FACEBOOK</button>
       </form>
     </>
-  );
-}
+  )
+
   
 
 export default Signup;
