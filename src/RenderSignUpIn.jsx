@@ -33,7 +33,7 @@ class RenderSignUpIn extends React.Component {
     ];
     const { handleSignIn, error, accountData, trackState,handleSubmit } = this.props; 
     return (
-      <>
+      <div className={styles.form}>
         <div>
           <div>
             {radioData.map((item) => (
@@ -69,7 +69,7 @@ class RenderSignUpIn extends React.Component {
             error={error}
           />
         )}
-      </>
+      </div>
     );
   }
 }

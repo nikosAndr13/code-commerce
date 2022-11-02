@@ -1,0 +1,12 @@
+.X {width:12px;}
+
+.productInfo {
+  display: flex;
+  max-width: 100px;  
+  font-size: 14px;
+  padding:10px;
+}
+
+.itemImg {
+  width:110px;
+}

@@ -12,7 +12,7 @@ import {
 
 class Codecommerce extends React.Component {
   state = {
-    successfulSignIn: false,
+    successfulSignIn: true,
     accountData: defaultValues,
     error: defaultValues,
     signedUpUsers: [

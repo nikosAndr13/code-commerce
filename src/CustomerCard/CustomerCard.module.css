@@ -1,0 +1,28 @@
+.cardWrapper {
+  max-width: 900px;
+  width: 100%;
+  max-height: 80vh;
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%); 
+  box-shadow: 0 0 10px 10px rgb(241,241,241);
+  padding: 20px 30px;
+}
+
+.cardItem {
+  display: flex;
+  align-items: center;
+  padding:10px;
+}
+
+.productBar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sideProductBar {
+  display: flex;
+  justify-content: space-evenly;
+  gap:30px;
+}

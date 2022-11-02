@@ -5,7 +5,7 @@ import styles from "../SignupLogin/SignUp.module.css";
 
 const Signup = ({revealPassword, trackState, accountData, handleSubmit, error}) => (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={styles.form}>
         {createNewAccount.map((item) => (
           <div key={item.name}>
             <Text
@@ -20,7 +20,7 @@ const Signup = ({revealPassword, trackState, accountData, handleSubmit, error}) 
         ))}
         <button className={`${styles.buttons} ${styles.pink}`} type="submit">SAVE</button>
         or
-        <button className={`${styles.buttons} ${styles.blue}`}>SIGN UP WITH FACEBOOK</button>
+        <button className={`${styles.buttons} ${styles.blue}`} type='none'>SIGN UP WITH FACEBOOK</button>
       </form>
     </>
   )
