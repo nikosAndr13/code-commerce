@@ -2,6 +2,7 @@ import React from "react";
 import Customercard from "./CustomerCard/CustomerCard";
 import { defaultValues } from "./Data";
 import RenderSignUpIn from "./RenderSignUpIn";
+import ShippingScreen from "./ShippingScreen/ShippingScreen";
 import {
   emailValidation,
   passwordValidation,
@@ -13,6 +14,7 @@ import {
 class Codecommerce extends React.Component {
   state = {
     successfulSignIn: true,
+    goToShipping: true,
     accountData: defaultValues,
     error: defaultValues,
     signedUpUsers: [
@@ -24,6 +26,7 @@ class Codecommerce extends React.Component {
         postalCode: "12345",
       },
     ],
+    discountCode: ''
   };
   
   trackState = ({ target: { name, value } }) => {
@@ -32,7 +35,7 @@ class Codecommerce extends React.Component {
         ...prevState.accountData,
         [name]: value,
       },
-    }));
+    }))
   };
 
   resetForms = () => {
@@ -40,6 +43,12 @@ class Codecommerce extends React.Component {
       accountData:defaultValues,
       error:defaultValues,
     })
+  }
+
+  proceedToShipping = () => {
+    this.state.goToShipping
+    ? (this.setState({goToShipping: false}))
+    : (this.setState({goToShipping: true}))
   }
 
   checkForError = () => {
@@ -65,7 +74,6 @@ class Codecommerce extends React.Component {
     if (existingPassword !== undefined) {
       return true;
     } else 
-    // this.setState((prevState) => ({ error: {...prevState.error, password: 'Wrong Password'}}))
     return false;
 
   }
@@ -136,27 +144,35 @@ class Codecommerce extends React.Component {
        {this.setState((prevState => ({error: {...prevState.error, email:'Account Already exists'}}))
     )}
   };
+
+  trackDiscountState = ({target : {name,value}}) => {this.setState({[name]: value})}
   
   render() {
-    return (
-      <>
-        {this.state.successfulSignIn 
-        ? (<Customercard />) 
-        : (<RenderSignUpIn 
-          signedUpUsers={this.state.signedUpUsers}
-          accountData={this.state.accountData}
-          error={this.state.error}
-          checkForError={this.checkForError}
-          trackState={this.trackState}
-          handleSignIn={this.handleSignIn}
-          handleSubmit={this.handleSubmit}
-          resetForms={this.resetForms}
-          successfulSignIn={this.state.successfulSignIn}
-          confirmPassword={this.confirmPassword}
-          />
-        )}
-      </>
-    );
+    const {successfulSignIn, goToShipping, accountData, error, signedUpUsers, discountCode} = this.state;
+
+    if (successfulSignIn && !goToShipping) {
+      return <Customercard
+      proceedToShipping={this.proceedToShipping}
+      trackState={this.trackDiscountState}
+      discountCode={discountCode}
+      />
+    } 
+    if (goToShipping && successfulSignIn) {
+      return <ShippingScreen/>
+    }
+    else {
+      return <RenderSignUpIn
+      signedUpUsers={signedUpUsers}
+      accountData={accountData}
+      error={error}
+      checkForError={this.checkForError}
+      trackState={this.trackState}
+      handleSignIn={this.handleSignIn}
+      handleSubmit={this.handleSubmit}
+      resetForms={this.resetForms}
+      confirmPassword={this.confirmPassword}
+      />
+    }
   }
 }
 

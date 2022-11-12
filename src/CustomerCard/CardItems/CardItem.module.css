@@ -1,12 +1,36 @@
-.X {width:12px;}
+.X {width:20px;}
+
+.imgWidth {
+  padding:5px;
+  opacity: .5;
+  cursor: pointer;
+  transition: all .5s ease-in-out;
+}
+
+.imgWidth:hover {
+  opacity: 0.9;
+}
 
 .productInfo {
   display: flex;
-  max-width: 100px;  
+  width: 100%;
   font-size: 14px;
-  padding:10px;
 }
 
 .itemImg {
-  width:110px;
+  width:120px;
+  object-fit: cover;
+  padding:10px;
+}
+
+.inputs {
+  display: flex;
+  gap:42px;
+  padding-right: 13px;
+}
+
+@media (max-height: 900px) {
+  .itemImg{
+    width: 90px;
+  }
 }

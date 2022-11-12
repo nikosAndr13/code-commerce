@@ -30,52 +30,38 @@ export const defaultValues = {
   postalCode: "",
 };
 
-
-
 export const shoppingCart = [
-  {
-    product: 'Black Belt',
-    img: `${Belt}`,
-    color: 'Space Black',
-    size: 'One size',
-    price: 19.90,
-    quantity: 1,
-    gender: 'Women'
-  },
-  {
-    product: 'Biker Jacket',
-    img: `${Biker}`,
-    color: 'Leather Black',
-    size: 'One size',
-    price: 59.90,
-    quantity: 1,
-    gender: 'Men',
-  },
-  {
-    product: 'Jeans',
-    img: `${Jeans}`,
-    color: 'Light Blue',
-    size: '38',
-    price: 39.90,
-    quantity: 1,
-    gender: 'Men',
-  },
-  {
-    product: 'Hoodie',
-    img:`${Hoodie}`,
-    color: 'Black',
-    size: 'Large',
-    price: 29.90,
-    quantity: 1,
-    gender: 'Men'
-  },
-  {
-    product: 'Navy T-shirt',
-    img: `${Navy}`,
-    color: 'Navy Blue',
-    size: 'Large',
-    price: 14.90,
-    quantity: 1,
-    gender: 'Men',
-  },
+  {product: 'Black Belt', img: `${Belt}`, color: 'Space Black', size: 'One size', price: 19.90.toFixed(2), gender: 'Women'},
+  {product: 'Biker Jacket', img: `${Biker}`, color: 'Leather Black', size: 'Large', price: 59.90.toFixed(2), gender: 'Men'},
+  {product: 'Jeans', img: `${Jeans}`, color: 'Light Blue', size: 'Medium', price: 39.90.toFixed(2), gender: 'Men'},
+  {product: 'Hoodie', img: `${Hoodie}`, color: 'Black', size: 'Large', price: 29.90.toFixed(2), gender: 'Women'},
+  {product: 'T-shirt', img: `${Navy}`, color: 'Navy Blue', size: 'Large', price: 14.90.toFixed(2), gender: 'Women'},
 ]
+
+export const shoppingItemsObj = {
+  "Black Belt": {
+    price: 19.90.toFixed(2),
+    quantity: '',
+    totalPrice: '',
+  },
+  "Biker Jacket": {
+    price: 59.90.toFixed(2),
+    quantity: '',
+    totalPrice: '',
+  },
+  Jeans: {
+    price: 39.90.toFixed(2),
+    quantity: '',
+    totalPrice: '',
+  },
+  Hoodie: {
+    price: 29.90.toFixed(2),
+    quantity: '',
+    totalPrice: '',
+  },
+  "T-shirt": {
+    price: 14.90.toFixed(2),
+    quantity: '',
+    totalPrice: '',
+  },
+}

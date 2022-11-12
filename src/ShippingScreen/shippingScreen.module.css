@@ -1,0 +1,42 @@
+.shippingScreenWrapper{
+  padding: 20px;
+}
+
+.title {
+  padding-bottom: 15px;
+  font-weight: 600;
+  font-size: 1.375rem;
+  border-bottom: 1px solid rgb(236, 236, 236);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap:20px;
+  padding: 20px 0 20px 0;
+  border-bottom: 1px solid rgb(236, 236, 236);
+}
+
+.Details {
+  display: flex;
+  align-items: center;
+}
+
+.Details p {
+  font-weight: 600;
+  width: 8rem;
+}
+
+.Address {
+  display: flex;
+  justify-content: space-evenly;
+  gap:10px;
+  font-weight: 600;
+}
+
+.AddressInput {width: 100%;}
+
+.inputsBorder, option {
+  background:  rgba(236,236,236);
+  width:8rem;
+}

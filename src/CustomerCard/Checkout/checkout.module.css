@@ -1,0 +1,60 @@
+.Checkout {
+  padding:30px;
+  box-shadow: 0 0 10px 10px rgb(241,241,241);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 60vh;
+}
+
+.summary {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.discount {
+  display: flex;
+  gap:10px;
+  align-items: center;
+}
+
+.CheckoutInfo div{
+  display: flex;
+  justify-content: space-between;
+}
+
+.inputsBorder {
+  border:none;
+  width: 100%;
+  background: none;
+  font-size: 1rem;
+  cursor: pointer;
+  color:rgba(255, 255, 255, 0.683);
+  font-weight: 500;
+  letter-spacing: 1px;
+  padding: 15px 30px;
+  transition: all ease-in-out 0.3s;
+}
+
+.inputsBorder:disabled {
+  background-color: rgba(255, 255, 255, 0.683);
+  cursor:default;
+}
+
+.inputsWrapper {
+  border:2px solid rgb(236,236,236);
+  display: flex;
+  justify-content: space-between;
+  padding:10px 10px;
+}
+
+.inputsBorder:hover {
+  color:white;
+  transition: all ease-in-out 0.3s;
+}
+
+.shipBackground {
+  background: rgb(204, 44, 83);
+  border-radius: 3px;
+  cursor: pointer;
+}

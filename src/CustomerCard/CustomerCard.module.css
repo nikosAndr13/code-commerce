@@ -1,28 +1,35 @@
-.cardWrapper {
-  max-width: 900px;
+.CustomerCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding:20px;
+  gap:40px;
   width: 100%;
-  max-height: 80vh;
-  position: absolute;
-  top:50%;
-  left:50%;
-  transform: translate(-50%, -50%); 
+}
+
+.cardWrapper {
+  display:flex;
+  flex-direction: column;
   box-shadow: 0 0 10px 10px rgb(241,241,241);
   padding: 20px 30px;
 }
 
 .cardItem {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   padding:10px;
+  gap:60px;
 }
 
 .productBar {
   display: flex;
+  width:800px;
   justify-content: space-between;
 }
 
 .sideProductBar {
   display: flex;
   justify-content: space-evenly;
-  gap:30px;
+  gap:40px;
 }
