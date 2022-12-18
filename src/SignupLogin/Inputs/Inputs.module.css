@@ -8,9 +8,12 @@
   border:2px solid rgb(236,236,236);
   display: flex;
   justify-content: space-between;
-  padding:10px 10px;
+  padding:5px 5px;
   outline: none;
+  align-items: center;
 }
+
+.errorWrapper {display: flex; flex-direction: column;}
 
 .imgWidth {
   filter: invert(100%) contrast(75%);
@@ -21,4 +24,13 @@
 
 .imgWidth:hover {
   filter: invert(80%) contrast(40%);
+}
+
+.cardIcons {
+  width:35px;
+}
+
+p {
+  margin-block-start: 0;
+  margin-block-end: 0;
 }

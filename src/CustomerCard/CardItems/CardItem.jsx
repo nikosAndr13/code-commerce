@@ -10,7 +10,7 @@ class CardItem extends React.Component {
   return (
     <>
       <div className={styles.productInfo}>
-        <div style={{display: 'flex'}}>
+        <div style={{display: 'flex', alignItems: 'center'}}>
           <RemoveItem name={product} onClick={remove}/>
           <img src={img} alt='Item' className={styles.itemImg} />
           {gender}<br/>

@@ -1,13 +1,10 @@
 import Codecommerce from './Codecommerce';
-import styles from "./App.module.css"
 
 function App() {
   
   return (
-    <div className={`${styles.App}`}>
-      <div className={`${styles.AppShadow}`}>
+    <div>
         <Codecommerce/>
-      </div>
     </div>
   );
 }

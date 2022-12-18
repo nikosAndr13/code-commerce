@@ -1,4 +1,4 @@
-.X {width:20px;}
+.X {width:12px;}
 
 .imgWidth {
   padding:5px;
@@ -13,14 +13,14 @@
 
 .productInfo {
   display: flex;
-  width: 100%;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .itemImg {
-  width:120px;
-  object-fit: cover;
   padding:10px;
+  aspect-ratio: 3 / 2;
+  width:150px;
+  object-fit: contain;
 }
 
 .inputs {
@@ -29,8 +29,30 @@
   padding-right: 13px;
 }
 
-@media (max-height: 900px) {
-  .itemImg{
-    width: 90px;
-  }
+.SummaryItem {
+  display: flex;
+  gap:15px;
+  border-bottom: 1px solid rgb(236, 236, 236);
+  align-items: center;
+}
+
+.summaryImg {
+  width:100px;
+  aspect-ratio: 3 / 2;
+  object-fit: contain;
+}
+
+.summaryInfo p, h5 {
+  font-size: 14px; 
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.product p, .price{
+  font-weight: 600;
+}
+
+.priceWrapper {
+  display: flex;
+  gap:30px;
 }

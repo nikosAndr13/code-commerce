@@ -1,67 +1,99 @@
 import React from "react";
 import Input from "../ShippingScreen/ShipInputs"
 import styles from "./shippingScreen.module.css"
-import style from "../SignupLogin/Inputs/Inputs.module.css"
-import { cities, countries, states } from "../countries";
 import ShippingMethod from "./shippingMethod"
-
+import Address from "./Address";
+import Checkout from "../CustomerCard/Checkout/Checkout"
+import ProgressBar from "../ProgressBar/ProgressBar";
 class ShippingScreen extends React.Component {
+
+  handleChange = ({target: {name, value}}) => {
+    const {trackState} = this.props;
+    trackState('shippingInfo', name, value)
+  }
+
   render() {
+    const {shippingInfo, 
+           shoppingCartObj, 
+           discountCode, 
+           errors, 
+           shipFee,
+           shipPrice,
+           handleSubmit,
+           trackAnyState,
+           totalCart,
+           goToShipping,
+           proceedToPayment,
+           ConfirmationScreen,
+          } = this.props;
+    const shippingArray = [
+      {title: "Address Title", name: 'address',
+      },
+      {title: "Name-Surname", name: 'name',
+      },
+      {title: "Email Address",  name: 'email',
+        styles: {width: '83.85%'},
+      },
+      { title: "Zip Code",  name: 'zip',
+        child: <Address 
+                trackState={this.handleChange} 
+                shippingInfo={shippingInfo}
+                errors={errors}
+                />, 
+        styles:{display:'flex', gap:'10px'}},
+      {title: "Phone", name: 'phone'},
+      {title: "2nd Number", name: 'phone2'},
+    ]
     return (
-    <div className={`${styles.shippingScreenWrapper}`}>
-    <div className={`${styles.title}`}>SHIPPING INFORMATION</div>
-    <form>
-      <div className={`${styles.Details}`}>
-        <p>Address Title</p>
-        <Input />
-      </div>
-      <div className={`${styles.Details}`}>
-        <p>Name-Surname</p>
-        <Input/>
-      </div>
-      <div className={`${styles.Details}`}>
-        <p>Your Address</p>
-        <div style={{width:'85%'}}><Input/></div>
-      </div>
-      <div className={`${styles.Details}`}>
-        <p>Zip Code</p>
-        <div className={`${styles.Details} ${styles.Address}`}>
-          <Input/>
-          Country 
-          <select className={`${style.inputsWrapper} ${styles.inputsBorder}`}>
-            <option disabled selected>Select</option>
-            {countries.map(country => (
-              <option key={country}>{country}</option>
-            ))}
-          </select>
-          City 
-          <select className={`${style.inputsWrapper} ${styles.inputsBorder}`}>
-            <option disabled selected>Select</option>
-            {cities.map(city => (
-              <option key={city}>{city}</option>
-            ))}
-          </select>
-          State 
-          <select className={`${style.inputsWrapper} ${styles.inputsBorder}`}>
-            <option disabled selected>Select</option>
-            {states.map(item => (
-              <option key={item.acronym}>{item.state}</option>
-            ))}
-          </select>
-        </div>
-      </div>
-      <div className={`${styles.Details}`}>
-        <p>Phone Number</p>
-        <Input/>
-      </div>
-      <div className={`${styles.Details}`}>
-        <p>2nd Number <small>(optional)</small></p>
-        <Input/>
-      </div>
-    </form>
-      <ShippingMethod/>
+      <>
+      <ProgressBar
+         shipping={goToShipping}
+         card={proceedToPayment}
+         confirm={ConfirmationScreen}
+        />
+      <div className={`${styles.shippingScreenWrapper}`}>
+      <div className={`${styles.title}`}>SHIPPING INFORMATION</div>
+      <div style={{display: 'flex', gap:'30px', width: '77rem'}}>
+        <form onSubmit={handleSubmit} id='shippingInfo' className={`${styles.shippingForm}`}>
+          {shippingArray.map(item => (
+            <div key={item.title} className={`${styles.Details}`}>
+              <p>{item.title}</p>
+              <div style={{...item.styles}}>
+              <Input
+              onChange={this.handleChange}
+              name={item.name}
+              value={shippingInfo[item.name]}
+              placeholder={item.title}
+              errorM={errors[item.name]}
+              required={true}
+              />
+              {item.child}
+            </div>
+          </div>
+        ))}
+        <ShippingMethod
+          name='shipFee'
+          shipFee={shipFee}
+          />
+        </form>
+          <Checkout
+            shoppingCartObj={shoppingCartObj}
+            trackState={trackAnyState}
+            value={discountCode}
+            id={'shippingInfo'}
+            shipPrice={Number(shipPrice)}
+            trackAnyState={trackAnyState}
+            totalCart={totalCart}
+            shippingInfo={shippingInfo}
+            />
     </div>
+      <div className={`${styles.bottomButtons}`}>
+        <button onClick={() => {trackAnyState('goToShipping', false)}}>BACK TO CART</button>
+      </div>
+    </div>
+    </>
   )}
 }
+
 
 export default ShippingScreen;

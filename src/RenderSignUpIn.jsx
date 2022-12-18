@@ -7,16 +7,24 @@ class RenderSignUpIn extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      signedUp: false,
+      signedUp: '',
     };
   }
 
-  switchForm = () => {
-    this.state.signedUp
-      ? this.setState({ signedUp: false })
-      : this.setState({ signedUp: true });
+  handleChange = ({target: {name, value}}) => {
+    const {trackState} = this.props;
+    trackState('accountData', name, value)
+  }
+
+  renderSignUp = () => {
+    this.setState({signedUp: 'SignUp'})
     this.props.resetForms();
-  };
+  }
+
+  renderSignIn = () => {
+    this.setState({signedUp: 'SignIn'})
+    this.props.resetForms();
+  }
 
   revealPassword = (e) => {
     const inputType = e.target.previousSibling.type;
@@ -28,21 +36,21 @@ class RenderSignUpIn extends React.Component {
 
   render() {
     const radioData = [
-      { label: "SIGN IN", type: "radio", name: "signIn", key: "sign In" },
-      { label: "CREATE ACCOUNT", type: "radio", name: "signIn", key: "create" },
+      { label: "SIGN IN", type: "radio", name: "signIn", key: "sign In", onClick: this.renderSignIn },
+      { label: "CREATE ACCOUNT", type: "radio", name: "signIn", key: "create", onClick: this.renderSignUp },
     ];
     const { handleSignIn, error, accountData, trackState,handleSubmit } = this.props; 
     return (
       <div className={styles.form}>
         <div>
-          <div>
+          <div className={`${styles.radioWrapper}`}>
             {radioData.map((item) => (
               <label key={item.key}>
                 <input
                   className={styles.radio}
                   type={item.type}
                   name={item.name}
-                  onClick={this.switchForm}
+                  onClick={item.onClick}
                   defaultChecked
                 />
                 {item.label}
@@ -52,10 +60,10 @@ class RenderSignUpIn extends React.Component {
           <img className={styles.imgWidth} src={X} alt="X" />
         </div>
         <br />
-        {this.state.signedUp ? (
+        {(this.state.signedUp === 'SignIn') ? (
           <Signin
             revealPassword={this.revealPassword}
-            trackState={trackState}
+            trackState={this.handleChange}
             handleSignIn={handleSignIn}
             accountData={accountData}
             error={error}
@@ -63,7 +71,7 @@ class RenderSignUpIn extends React.Component {
           ) : (
           <Signup
             revealPassword={this.revealPassword}
-            trackState={trackState}
+            trackState={this.handleChange}
             handleSubmit={handleSubmit}
             accountData={accountData}
             error={error}

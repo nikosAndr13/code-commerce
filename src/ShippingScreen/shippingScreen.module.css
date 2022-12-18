@@ -1,5 +1,11 @@
 .shippingScreenWrapper{
-  padding: 20px;
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  width: 100%;
+  max-width: 1140px;
+  height: 80vh;
 }
 
 .title {
@@ -9,17 +15,16 @@
   border-bottom: 1px solid rgb(236, 236, 236);
 }
 
-form {
+.shippingForm {
   display: flex;
   flex-direction: column;
-  gap:20px;
-  padding: 20px 0 20px 0;
-  border-bottom: 1px solid rgb(236, 236, 236);
+  padding: 10px 0 0 0;
 }
 
 .Details {
   display: flex;
   align-items: center;
+  gap:10px;
 }
 
 .Details p {
@@ -39,4 +44,21 @@ form {
 .inputsBorder, option {
   background:  rgba(236,236,236);
   width:8rem;
+}
+
+.shippingLayout { display: flex;}
+
+.bottomButtons { 
+  display:  flex;
+  justify-content: space-between;
+  position: absolute;
+  left:0;
+  bottom:0;
+  padding:0 0 10px 10px;
+}
+
+.bottomButtons button {
+  cursor: pointer;
+  padding:10px ;
+  width: 150px;
 }

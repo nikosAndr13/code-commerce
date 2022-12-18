@@ -1,0 +1,51 @@
+.ConfirmationWrapper {
+  display: flex;
+  gap:30px;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+
+.Confirmation {
+  display: flex;
+  padding:30px;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-evenly;
+  width:50%;
+  height: 65vh;
+  box-shadow: 0 0 10px 10px rgb(241 241 241);
+}
+
+.OrderConfirm {padding-bottom: 50px;}
+
+.OrderConfirm img {
+  width:70px;
+  filter: 
+  brightness(0) 
+  saturate(100%) 
+  invert(25%) 
+  sepia(61%) 
+  saturate(2500%) 
+  hue-rotate(323deg) 
+  brightness(90%) 
+  contrast(93%);
+  padding-bottom: 30px;
+}
+
+.ButtonWrapper {
+  display: flex;
+  flex-direction: column;
+  padding:20px;
+  gap:20px;
+}
+
+.ButtonWrapper div button {
+  padding:10px 30px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 10px;
+  outline: none;
+  border-color: transparent;
+  cursor: pointer;
+}

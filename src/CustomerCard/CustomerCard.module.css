@@ -2,8 +2,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding:20px;
+  position: relative;
   gap:40px;
+  position: absolute;
+  left: 50%;
+  top:50%;
+  transform: translate(-50%,-50%);
+  max-width: 1440px;
   width: 100%;
 }
 
@@ -12,24 +17,24 @@
   flex-direction: column;
   box-shadow: 0 0 10px 10px rgb(241,241,241);
   padding: 20px 30px;
+  width:50%;
 }
 
 .cardItem {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding:10px;
-  gap:60px;
 }
 
 .productBar {
   display: flex;
-  width:800px;
   justify-content: space-between;
 }
 
 .sideProductBar {
   display: flex;
   justify-content: space-evenly;
-  gap:40px;
+  gap:30px;
 }
+
+ 

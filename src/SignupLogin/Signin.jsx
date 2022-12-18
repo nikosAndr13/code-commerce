@@ -14,7 +14,8 @@ const Signin = ({revealPassword, trackState, handleSignIn, accountData, error })
             autoComplete="off"
             value={accountData[item.name]}
             onClick={revealPassword}
-            error={error[item.name]} />
+            error={error[item.name]} 
+            />
         </div>
       ))}
       <button className={`${styles.buttons} ${styles.pink}`} type="submit">
