@@ -18,12 +18,12 @@ export const passwordValidation = (password) => {
 }
 
 export const firstNameValidation = (firstName) => 
-  (!nameRegex.test(firstName))
+  (!nameRegex.test(firstName) || (firstName.length === 0))
   ? 'Your name is not valid'
   : ''
 
 export const surNameValidation = (surName) => 
-  (!nameRegex.test(surName))
+  (!nameRegex.test(surName) || (surName.length === 0))
   ? 'Your name is not valid'
   : ''
 

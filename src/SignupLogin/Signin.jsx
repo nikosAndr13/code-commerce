@@ -23,7 +23,7 @@ const Signin = ({revealPassword, trackState, handleSignIn, accountData, error })
       </button>
       or
       <button className={`${styles.buttons} ${styles.blue}`}>
-        SIGN UP WITH FACEBOOK
+        SIGN IN WITH FACEBOOK
       </button>
     </form>
   </>

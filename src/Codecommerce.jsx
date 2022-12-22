@@ -11,9 +11,9 @@ import {emailValidation, passwordValidation, firstNameValidation, surNameValidat
 import Confirmation from "./ConfirmationScreen/Confirmation";
 class Codecommerce extends React.Component {
   state = {
-    successfulSignIn: true,
-    goToShipping: true,
-    proceedToPayment: true,
+    successfulSignIn: false,
+    goToShipping: false,
+    proceedToPayment: false,
     accountData: defaultValues,
     error: defaultValues,
     signedUpUsers: signedUpUsers,
@@ -72,7 +72,7 @@ class Codecommerce extends React.Component {
 
   checkForExistingInfo = (array, value, key) => {
      const check = array.find(account => {return account[key] === value})
-     if (check) {return true} else {return false}
+     if (check) {return true} 
   }
 
   handleValidations = () => {
@@ -81,7 +81,7 @@ class Codecommerce extends React.Component {
     this.trackState('error', 'password', passwordValidation(password))
     this.trackState('error', 'confirm', this.confirmPassword())
     this.trackState('error', 'firstName', firstNameValidation(firstName))
-    this.trackState('error', 'firstName', surNameValidation(surname))
+    this.trackState('error', 'surname', surNameValidation(surname))
     this.trackState('error', 'postalCode', postalCodeValidation(postalCode))
   }
 
@@ -95,17 +95,17 @@ class Codecommerce extends React.Component {
   handleSignIn = (e) => {
     e.preventDefault();
     const {accountData, signedUpUsers, error} = this.state;
-    (this.checkForError(error) 
-      && this.checkForExistingInfo(signedUpUsers, accountData.email, ['email'])
-      && this.checkForExistingInfo(signedUpUsers, accountData.password, ['password'])
+    this.handleValidations();
+    (Object.values(accountData).every(value => value !== '') 
+      && Object.values(error).every(value => value === '')
      ? this.trackAnyState('successfulSignIn', true)
      : this.trackAnyState('successfulSignIn', false))
 
-    if (this.checkForExistingInfo(signedUpUsers, accountData.password, ['password']) === false) {
+    if (!this.checkForExistingInfo(signedUpUsers, accountData.password, ['password'])) {
         this.trackState('error', 'password', 'Wrong Password')} else {
         this.trackState('error', 'password', '')}
 
-     if (this.checkForExistingInfo(signedUpUsers, accountData.email, ['email']) === false) {
+     if (!this.checkForExistingInfo(signedUpUsers, accountData.email, ['email'])) {
         this.trackState('error', 'email', 'Account Does not Exist')
     } else {this.trackState('error', 'email', '')}
   } 
@@ -122,12 +122,13 @@ class Codecommerce extends React.Component {
       lastName: lastName,
       postalCode: postalCode,
     };
-    if (!this.checkForError(error) 
-        && !this.checkForExistingInfo(signedUpUsers, accountData.email, ['email'])
-        && Object.values(accountData).every(value => value !== '')) {
-      this.setState((prevState) => {
-        return {signedUpUsers: [...prevState.signedUpUsers, newUser]};
-      });}
+    if (!this.checkForExistingInfo(signedUpUsers, accountData.email, ['email'])
+        && Object.values(accountData).every(value => value !== '') 
+        && Object.values(error).every(value => value === '')) 
+        {
+        this.setState((prevState) => {
+          return {signedUpUsers: [...prevState.signedUpUsers, newUser]};
+        });}
     if (this.checkForExistingInfo(signedUpUsers, accountData.email, ['email']))
        {this.trackState('error', 'email', 'Account Already exists')}   
   };
