@@ -96,10 +96,6 @@ class Codecommerce extends React.Component {
     e.preventDefault();
     const {accountData, signedUpUsers, error} = this.state;
     this.handleValidations();
-    (Object.values(accountData).every(value => value !== '') 
-      && Object.values(error).every(value => value === '')
-     ? this.trackAnyState('successfulSignIn', true)
-     : this.trackAnyState('successfulSignIn', false))
 
     if (!this.checkForExistingInfo(signedUpUsers, accountData.password, ['password'])) {
         this.trackState('error', 'password', 'Wrong Password')} else {
@@ -108,6 +104,10 @@ class Codecommerce extends React.Component {
      if (!this.checkForExistingInfo(signedUpUsers, accountData.email, ['email'])) {
         this.trackState('error', 'email', 'Account Does not Exist')
     } else {this.trackState('error', 'email', '')}
+
+    if (this.checkForExistingInfo(signedUpUsers, accountData.password, ['password'])
+        && this.checkForExistingInfo(signedUpUsers, accountData.email, ['email'])
+    ) {this.trackState('successfulSignIn', true)}
   } 
 
   handleSubmit = (e) => {

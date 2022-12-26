@@ -12,6 +12,11 @@ export const inputsInfo = [
   { label: "Postcode", type: "text", name: "postalCode" },
 ];
 
+export const signInInfo = [
+  { label: "Your Email Address*", type: "text", name: "email" },
+  { label: "Password*", type: "password", name: "password" },
+];
+
 const confirmPassword = {
   label: "Confirm Password*",
   type: "password",
@@ -24,7 +29,6 @@ createNewAccount.splice(2, 0, confirmPassword);
 export const defaultValues = {
   email: "",
   password: "",
-  // confirm:'',
   firstName: "",
   surname: "",
   postalCode: "",

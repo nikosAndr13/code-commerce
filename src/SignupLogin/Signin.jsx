@@ -1,12 +1,12 @@
 import React from "react";
 import Text from "./Inputs/Inputs";
-import { inputsInfo } from "../Data";
+import { signInInfo } from "../Data";
 import styles from "../SignupLogin/SignIn.module.css";
 
 const Signin = ({revealPassword, trackState, handleSignIn, accountData, error }) => (
   <>
     <form onSubmit={handleSignIn}>
-      {inputsInfo.map((item) => (
+      {signInInfo.map((item) => (
         <div key={item.name}>
           <Text
             {...item}
@@ -20,10 +20,6 @@ const Signin = ({revealPassword, trackState, handleSignIn, accountData, error })
       ))}
       <button className={`${styles.buttons} ${styles.pink}`} type="submit">
         SAVE
-      </button>
-      or
-      <button className={`${styles.buttons} ${styles.blue}`}>
-        SIGN IN WITH FACEBOOK
       </button>
     </form>
   </>
