@@ -32,7 +32,7 @@ class Checkout extends React.Component {
   }
   
   render() {
-    const {shoppingCartObj, length, trackAnyState, shipPrice, value, id, totalCart, name, shippingInfo, cardInfo, cardType} = this.props;
+    const {shoppingCartObj, length, trackAnyState, shipPrice, value, id, totalCart, name, shippingInfo, cardInfo, cardType, isDisabled} = this.props;
     const discountAmount = (calcSum(shoppingCartObj) - calcDiscount(value, calcSum(shoppingCartObj))).toFixed(2)
     return (
       <div className={`${styles.Checkout}`}>
@@ -102,7 +102,7 @@ class Checkout extends React.Component {
         <div className={`${styles.inputsWrapper} ${styles.shipBackground}`}>
           <button 
             type='submit'
-            disabled={length === 0 ? true : false}
+            disabled={isDisabled ? true : false}
             onClick={() => {trackAnyState(name, true)}}
             className={`${styles.inputsBorder}`}
             form={id}

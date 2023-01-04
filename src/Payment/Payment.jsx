@@ -115,6 +115,7 @@ class Payment extends React.Component {
           shippingInfo={shippingInfo}
           cardInfo={cardInfo}
           cardType={cardType}
+          isDisabled={isDisabled}
         /> 
       </div>
       </>

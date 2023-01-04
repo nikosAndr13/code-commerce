@@ -37,7 +37,7 @@ const Confirmation = ({
             <button>Track Order</button>
           </div>
           <div>
-            <button>Back To Home Page</button>
+            <button onClick={() => {trackAnyState('ConfirmationScreen', false)}}>Back To Home Page</button>
           </div>
         </div>
       </div>

@@ -13,7 +13,7 @@ class Codecommerce extends React.Component {
   state = {
     successfulSignIn: false,
     goToShipping: false,
-    proceedToPayment: true,
+    proceedToPayment: false,
     accountData: defaultValues,
     error: defaultValues,
     signedUpUsers: signedUpUsers,
