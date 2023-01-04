@@ -1,10 +1,10 @@
 const passwordRegex = /^(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.*[^a-z])(?=.{8,20})/;
 const nameRegex = /^([^0-9]*)$/;
 export const postalRegex = /^\d+$/;
-const MASTERCARD = /^5[1-5][0-9]{1,}^2[2-7][0-9]{1,}$/
-const VISA = /^4[0-9]{2,}$/
-const AMERICAN_EXPRESS = /3^[47][0-9]{5,}$/
-const DISCOVER = /^6(?:011|5[0-9]{2})[0-9]{3,}$/
+const MASTERCARD = /^5[1-5][0-9]{1,}|^2[2-7][0-9]{1,}$/;
+const VISA = /^4[0-9]{2,}$/;
+const AMERICAN_EXPRESS = /^3[47][0-9]{5,}$/;
+const DISCOVER = /^6(?:011|5[0-9]{2})[0-9]{3,}$/;
 
 export const emailValidation = (email) => 
   (!email.includes('@') || (email.length === 0))

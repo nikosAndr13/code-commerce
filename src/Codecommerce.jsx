@@ -13,7 +13,7 @@ class Codecommerce extends React.Component {
   state = {
     successfulSignIn: false,
     goToShipping: false,
-    proceedToPayment: false,
+    proceedToPayment: true,
     accountData: defaultValues,
     error: defaultValues,
     signedUpUsers: signedUpUsers,
@@ -94,7 +94,7 @@ class Codecommerce extends React.Component {
   
   handleSignIn = (e) => {
     e.preventDefault();
-    const {accountData, signedUpUsers, error} = this.state;
+    const {accountData, signedUpUsers} = this.state;
     this.handleValidations();
 
     if (!this.checkForExistingInfo(signedUpUsers, accountData.password, ['password'])) {
@@ -172,7 +172,11 @@ class Codecommerce extends React.Component {
 
   findDebitCard = (cardNumber) => {
     for (const card in cards) {
-      if (cardNumber.replace(/[^\d]/g, '').match(cards[card])) return card;
+      if (cardNumber.replace(/[^\d]/g, '').match(cards[card])) {
+        console.log(cardNumber)
+        return card
+      };
+
     }
     return '';
   }
